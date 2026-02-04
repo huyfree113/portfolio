@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Huy Võ | Web Developer & Business Consultant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Website cá nhân của Huy Võ - Web Developer & Business Consultant. Chuyên thiết kế website, tư vấn kinh doanh và xây dựng hệ thống online.">
+
+</head>
+
+<body>
+<header>
+    <img src="avatar.jpg" width="120" alt="Ảnh đại diện Huy Võ">
+
+    <h1>Huy Võ</h1>
+
+    <p>Web Developer & Business Consultant</p>
+</header>
+
+<nav>
+    <a href="#about">Giới thiệu</a> |
+    <a href="#services">Dịch vụ</a> |
+    <a href="#projects">Dự án</a> |
+    <a href="#contact">Liên hệ</a>
+</nav>
+
+<main>
+
+<section id="about">
+    <h2>Giới thiệu</h2>
+
+    <p>
+    Tôi là người kinh doanh trong lĩnh vực làm đẹp,
+    may đo và tư vấn doanh nghiệp.
+    Hiện tại tôi đang học lập trình để xây dựng
+    hệ thống online cho riêng mình.
+    </p>
+</section>
+
+<section id="services">
+    <h2>Dịch vụ</h2>
+
+    <ul>
+        <li>Skincare & Spa</li>
+        <li>May đo suit</li>
+        <li>Tư vấn kinh doanh</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>Dự án</h2>
+
+    <div class="project">
+        <h3>Website Spa Mini</h3>
+        <p>Landing page giới thiệu dịch vụ.</p>
+    </div>
+
+    <div class="project">
+        <h3>Tool Quản Lý Khách</h3>
+        <p>Excel + Python.</p>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Liên hệ</h2>
+    <p id="message"></p>
+    <form method="post">
+        <input type="text" name="fullname" placeholder="Họ tên">
+        <input type="email" name="email" placeholder="Email">
+        <textarea name="message" placeholder="Nội dung"></textarea>
+        <button>Gửi</button>
+    </form>
+
+
+<button id="loadApi">Load dữ liệu mẫu</button>
+<h3>Danh sách liên hệ</h3>
+
+<ul id="contactList"></ul>
+
+</section>
+
+</main>
+
+<footer>
+    <p>© 2026 Huy Võ. All rights reserved.</p>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>

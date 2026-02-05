@@ -16,7 +16,6 @@ Users can add, search, and export contact data.
 
 ## 🔹 Features
 - Add new contacts
-- Search contacts
 - Export data
 - REST API
 - Responsive UI

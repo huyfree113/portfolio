@@ -15,38 +15,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const themeBtn = document.getElementById("themeToggle");
 
     // ================= SERVER =================
-    /*
-        async function saveLocal(data) {
     
-            try {
-                await fetch("http://:3000/api/contacts", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                });
+      async function saveServer(data) {
+  await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+}
+
+async function loadServer() {
+  const res = await fetch(API_URL);
+  const data = await res.json();
+  renderContacts(data);
+}
+
     
-            } catch (err) {
-                showError("Không kết nối được server");
-                console.error(err);
-            }
-        }
-    
-        async function loadLocal() {
-    
-            try {
-                const res = await fetch("http://:3000/api/contacts");
-                const data = await res.json();
-    
-                renderContacts(data);
-    
-            } catch (err) {
-                showError("Không tải được dữ liệu server");
-                console.error(err);
-            }
-        }
-    */
     // ================= UI =================
 
     function showError(text) {
@@ -83,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     // ===== LOCAL STORAGE =====
 
-    function saveLocal(data) {
+    function saveServer(data) {
 
     let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
@@ -123,13 +107,21 @@ function loadLocal() {
             time: new Date().toLocaleString()
         };
 
-        await saveLocal(data);
+        await fetch(API_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(data)
+});
+
 
         showSuccess("Đã gửi thành công!");
 
         form.reset();
 
-        loadLocal();
+        loadServer();
+
     });
 
     // ================= SEARCH =================
@@ -138,7 +130,7 @@ function loadLocal() {
 
         const key = this.value.toLowerCase();
 
-        const res = await fetch("http://:3000/api/contacts");
+        const res = await fetch(API_URL);
         const data = await res.json();
 
         const filtered = data.filter(item =>
@@ -162,10 +154,10 @@ function loadLocal() {
             .then(data => {
 
                 data.forEach(item => {
-                    saveLocal(item); // hoặc saveLocal nếu không dùng server
+                    saveServer(item); // hoặc saveLocal nếu không dùng server
                 });
 
-                loadLocal();  // hoặc loadLocal nếu dùng localStorage
+                saveServer(item);  // hoặc loadLocal nếu dùng localStorage
 
                 showSuccess("Đã load dữ liệu mẫu!");
             })
@@ -178,7 +170,7 @@ function loadLocal() {
 
     exportBtn.addEventListener("click", async function () {
 
-        const res = await fetch("http://:3000/api/contacts");
+        const res = await fetch(API_URL);
         const data = await res.json();
 
         if (!data.length) {
@@ -254,7 +246,7 @@ function loadLocal() {
 
     // ================= INIT =================
 
-    loadLocal();
+    loadServer();
 
 });
 

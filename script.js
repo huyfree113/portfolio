@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ================= SERVER =================
 async function getContacts() {
-  const data = await getContacts();
+  const res = await fetch(API_URL);
 
   if (!res.ok) {
     throw new Error("Cannot fetch contacts");
@@ -35,7 +35,6 @@ async function getContacts() {
 }
 
 async function loadServer() {
-  const data = await getContacts();
   const data = await getContacts();
   renderContacts(data);
 }
@@ -140,7 +139,6 @@ if (searchBox) {
     const key = this.value.toLowerCase();
 
     const data = await getContacts();
-    const data = await getContacts();
 
     const filtered = data.filter(item =>
       item.name.toLowerCase().includes(key) ||
@@ -182,7 +180,6 @@ if (loadBtn) {
 if (exportBtn) {
     exportBtn.addEventListener("click", async function () {
 
-        const data = await getContacts();
         const data = await getContacts();
 
         if (!data.length) {

@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const API_URL = "https://portfolio-backend-2xlj.onrender.com/api/contacts";
+    /*const API_URL = "https://portfolio-backend-2xlj.onrender.com/api/contacts";*/
+    /*const API_URL = "http://localhost:3000/api/contacts";*/
     const form = document.querySelector("form");
     const messageBox = document.getElementById("message");
     const contactList = document.getElementById("contactList");
@@ -15,6 +16,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const themeBtn = document.getElementById("themeToggle");
 
     // ================= SERVER =================
+async function getContacts() {
+  const data = await getContacts();
+
+  if (!res.ok) {
+    throw new Error("Cannot fetch contacts");
+  }
+
+  return res.json();
+}
     
       async function saveServer(data) {
   await fetch(API_URL, {
@@ -25,8 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 async function loadServer() {
-  const res = await fetch(API_URL);
-  const data = await res.json();
+  const data = await getContacts();
+  const data = await getContacts();
   renderContacts(data);
 }
 
@@ -67,14 +77,12 @@ async function loadServer() {
     }
     // ===== LOCAL STORAGE =====
 
-    function saveServer(data) {
-
-    let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-
-    contacts.push(data);
-
-    localStorage.setItem("contacts", JSON.stringify(contacts));
+    function saveLocal(data) {
+  let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+  contacts.push(data);
+  localStorage.setItem("contacts", JSON.stringify(contacts));
 }
+
 
 function loadLocal() {
 
@@ -126,24 +134,27 @@ function loadLocal() {
 
     // ================= SEARCH =================
 
-    searchBox.addEventListener("input", async function () {
+if (searchBox) {
+  searchBox.addEventListener("input", async function () {
 
-        const key = this.value.toLowerCase();
+    const key = this.value.toLowerCase();
 
-        const res = await fetch(API_URL);
-        const data = await res.json();
+    const data = await getContacts();
+    const data = await getContacts();
 
-        const filtered = data.filter(item =>
-            item.name.toLowerCase().includes(key) ||
-            item.email.toLowerCase().includes(key)
-        );
+    const filtered = data.filter(item =>
+      item.name.toLowerCase().includes(key) ||
+      item.email.toLowerCase().includes(key)
+    );
 
-        renderContacts(filtered);
-    });
+    renderContacts(filtered);
+  });
+}
+
 
 
     // ================= SAMPLE DATA =================
-
+if (loadBtn) {
     loadBtn.addEventListener("click", function () {
 
         fetch("https://raw.githubusercontent.com/huyfree113/portfolio/main/data.json")
@@ -166,12 +177,13 @@ function loadLocal() {
                 console.error(err);
             });
     });
+    }
     // ================= EXPORT =================
-
+if (exportBtn) {
     exportBtn.addEventListener("click", async function () {
 
-        const res = await fetch(API_URL);
-        const data = await res.json();
+        const data = await getContacts();
+        const data = await getContacts();
 
         if (!data.length) {
             alert("Không có dữ liệu");
@@ -191,9 +203,9 @@ function loadLocal() {
 
         URL.revokeObjectURL(url);
     });
-
+}
     // ================= IMPORT =================
-
+if (importFile) {
     importFile.addEventListener("change", function () {
 
         const file = this.files[0];
@@ -223,14 +235,14 @@ function loadLocal() {
 
         reader.readAsText(file);
     });
-
+}
     // ================= DARK MODE =================
 
     if (localStorage.getItem("theme") === "dark") {
         document.body.classList.add("dark");
         themeBtn.textContent = "☀️";
     }
-
+if (themeBtn) {
     themeBtn.addEventListener("click", function () {
 
         document.body.classList.toggle("dark");
@@ -243,7 +255,7 @@ function loadLocal() {
             themeBtn.textContent = "🌙";
         }
     });
-
+}
     // ================= INIT =================
 
     loadServer();

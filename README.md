@@ -1,58 +1,22 @@
-# 📒 Contact Manager Portfolio
+# 📒 Contact Manager - Fullstack Project
 
-## 📌 Description
-A simple fullstack contact management web application built with
-HTML, CSS, JavaScript, Node.js, and Express.
+## 🔹 Description
+A fullstack web app to manage contacts.
+Users can add, search, and export contact data.
 
-Users can submit messages, view contact list, and search contacts.
+## 🔹 Tech Stack
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js, Express
+- Database: JSON File
+- Deploy: Netlify + Render
 
-## 🚀 Features
-- Submit contact form
-- View contact list
+## 🔹 Live Demo
+- Frontend: https://delicate-lamington-662a58.netlify.app/
+- Backend: https://your-backend.onrender.com
+
+## 🔹 Features
+- Add new contacts
 - Search contacts
-- Export / Import JSON
-- Dark mode
-- REST API backend
-
-## 🛠 Tech Stack
-
-### Frontend
-- HTML
-- CSS
-- JavaScript (Vanilla)
-
-### Backend
-- Node.js
-- Express.js
-
-### Database
-- JSON File (File System)
-
-## ▶️ Run Locally
-
-### Backend
-
-```bash
-cd portfolio-backend
-npm install
-npm start
-Server runs on: http://localhost:3000
-
-Frontend
-
-Open index.html with Live Server
-or open directly in browser.
-
-🌐 Live Demo
-
-Frontend: (Coming soon)
-
-Backend: https://portfolio-backend-2xlj.onrender.com
-
-📷 Screenshots
-
-(Add screenshots here)
-
-👤 Author
-
-Huy Vo
+- Export data
+- REST API
+- Responsive UI

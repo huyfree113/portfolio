@@ -12,10 +12,11 @@ Users can add, search, and export contact data.
 
 ## 🔹 Live Demo
 - Frontend: https://delicate-lamington-662a58.netlify.app/
-- Backend: https://your-backend.onrender.com
+- Backend: https://portfolio-backend-2xlj.onrender.com/
 
 ## 🔹 Features
 - Add new contacts
 - Export data
 - REST API
 - Responsive UI
+
